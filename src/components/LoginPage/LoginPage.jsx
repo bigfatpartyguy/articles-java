@@ -8,7 +8,7 @@ import classes from './LoginPage.module.css';
 const LoginPage = () => {
   const [disabled, setDisabled] = useState(true);
   const {values, handleChange, handleBlur, handleSubmit, errors} =
-    useFormValidation({email: '', password: ''}, validateInputs, setDisabled);
+    useFormValidation({login: '', password: ''}, validateInputs, setDisabled);
 
   const onSubmit = async user => {
     const auth = await fetch('http://localhost:8000/prod/login', {
@@ -30,12 +30,12 @@ const LoginPage = () => {
         onSubmit={event => handleSubmit(event, onSubmit)}
       >
         <Input
-          type="email"
-          id="email"
-          text="Email"
-          value={values.email}
-          error={!!errors.email || false}
-          errorMessage={errors.email || ''}
+          type="text"
+          id="login"
+          text="Login"
+          value={values.login}
+          error={!!errors.login || false}
+          errorMessage={errors.login || ''}
           onChange={handleChange}
           onBlur={handleBlur}
         />
