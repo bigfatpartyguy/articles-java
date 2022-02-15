@@ -1,0 +1,36 @@
+@import 'vars/typography';
+@import 'elements/button';
+@import 'elements/input';
+
+@import url($font-url);
+
+html {
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', 'Roboto', 'Oxygen', 'Helvetica Neue', 'Arial',
+    sans-serif;
+  font-size: map-get($font-size, base);
+  font-weight: map-get($font-size, base);
+  height: 100%;
+  #root {
+    height: 100%;
+
+    button,
+    input,
+    select {
+      font-size: 1rem;
+    }
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family: inherit;
+}

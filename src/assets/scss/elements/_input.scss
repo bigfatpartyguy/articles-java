@@ -1,0 +1,51 @@
+[type='text'],
+[type='email'],
+[type='number'],
+[type='password'],
+select {
+  border: 1px solid #dedede;
+  border-radius: 0.2rem;
+  padding: 0.6rem;
+  outline: none;
+}
+
+[type='text']:hover,
+[type='email']:hover,
+[type='number']:hover,
+[type='password']:hover,
+select:hover {
+  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+[type='text']:focus,
+[type='text']:active,
+[type='email']:focus,
+[type='email']:active,
+[type='number']:focus,
+[type='number']:active,
+[type='password']:focus,
+[type='password']:active,
+select:focus,
+select:active {
+  border: 1px solid #2781ff;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #8cbcfe;
+}
+
+select {
+  color: #404040;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAJCAYAAAA/33wPAAAAvklEQVQoFY2QMQqEMBBFv7ERa/EMXkGw11K8QbDXzuN4BHv7QO6ifUgj7v4UAdlVM8Uwf+b9YZJISnlqrfEUZVlinucnBGKaJgghbiHOyLyFKIoCbdvecpyReYvo/Ma2bajrGtbaC58kCdZ1RZ7nl/4/4d5EsO/7nzl7IUtodBexMMagaRrs+06JLMvcNWmaOv2W/C/TMAyD58dxROgSmvxFFMdxoOs6lliWBXEcuzokXRbRoJRyvqqqQvye+QDMDz1D6yuj9wAAAABJRU5ErkJggg==)
+    right center no-repeat;
+  line-height: 1;
+  width: 100%;
+  max-width: 100%;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+label {
+  font-size: 0.8rem;
+}
