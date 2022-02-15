@@ -19,6 +19,8 @@ body {
   height: 100%;
   #root {
     height: 100%;
+    display: flex;
+    justify-content: center;
     button,
     input,
     select {

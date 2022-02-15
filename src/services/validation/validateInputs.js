@@ -12,8 +12,11 @@ const validateInputs = values => {
   ) {
     errors.secondName = 'required';
   }
-  if (Object.prototype.hasOwnProperty.call(values, 'login') && !values.login) {
-    errors.login = 'required';
+  if (
+    Object.prototype.hasOwnProperty.call(values, 'username') &&
+    !values.username
+  ) {
+    errors.username = 'required';
   }
   if (Object.prototype.hasOwnProperty.call(values, 'email') && !values.email) {
     errors.email = 'required';

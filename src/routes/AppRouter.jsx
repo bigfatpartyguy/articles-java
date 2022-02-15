@@ -3,9 +3,9 @@ import {getToken} from '../services/storage';
 import AuthRouter from './AuthRouter';
 import MainRouter from './MainRouter';
 
-const AppRouter = () => {
+const AppRouter = ({signin}) => {
   if (!getToken()) {
-    return <AuthRouter />;
+    return <AuthRouter signin={signin} />;
   }
   return <MainRouter />;
 };

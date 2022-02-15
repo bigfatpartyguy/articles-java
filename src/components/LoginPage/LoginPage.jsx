@@ -5,21 +5,18 @@ import Input from '../Input';
 import Button from '../Button';
 import classes from './LoginPage.module.css';
 
-const LoginPage = () => {
+const LoginPage = ({signin}) => {
   const [disabled, setDisabled] = useState(true);
   const {values, handleChange, handleBlur, handleSubmit, errors} =
-    useFormValidation({login: '', password: ''}, validateInputs, setDisabled);
+    useFormValidation(
+      {username: '', password: ''},
+      validateInputs,
+      setDisabled
+    );
 
-  const onSubmit = async user => {
-    const auth = await fetch('http://localhost:8000/prod/login', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
-    const authJson = await auth.json();
-    console.log(authJson);
+  const onSubmit = user => {
+    const data = JSON.stringify(user);
+    signin(data);
   };
 
   return (
@@ -31,11 +28,11 @@ const LoginPage = () => {
       >
         <Input
           type="text"
-          id="login"
+          id="username"
           text="Login"
-          value={values.login}
-          error={!!errors.login || false}
-          errorMessage={errors.login || ''}
+          value={values.username}
+          error={!!errors.username || false}
+          errorMessage={errors.username || ''}
           onChange={handleChange}
           onBlur={handleBlur}
         />
