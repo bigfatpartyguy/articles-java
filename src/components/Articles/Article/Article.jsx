@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from './Article.module.scss';
 
 const Article = ({title, text}) => {
   return (
-    <article>
+    <section className={styles.article}>
       <h2>{title}</h2>
-      <p>{text}</p>
-    </article>
+      <p>{text.slice(0, 200) + '...'}</p>
+    </section>
   );
 };
 

@@ -1,0 +1,15 @@
+.articles {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 300px;
+  grid-auto-rows: 300px;
+  grid-gap: 20px;
+  & .create-article {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+  }
+}

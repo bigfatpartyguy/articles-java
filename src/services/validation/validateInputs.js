@@ -1,18 +1,6 @@
 const validateInputs = values => {
   const errors = {};
   if (
-    Object.prototype.hasOwnProperty.call(values, 'firstName') &&
-    !values.firstName
-  ) {
-    errors.firstName = 'required';
-  }
-  if (
-    Object.prototype.hasOwnProperty.call(values, 'secondName') &&
-    !values.secondName
-  ) {
-    errors.secondName = 'required';
-  }
-  if (
     Object.prototype.hasOwnProperty.call(values, 'username') &&
     !values.username
   ) {
@@ -37,10 +25,16 @@ const validateInputs = values => {
     errors.password = 'at least 5 characters';
   }
   if (
-    Object.prototype.hasOwnProperty.call(values, 'birthday') &&
-    !values.birthday
+    Object.prototype.hasOwnProperty.call(values, 'articleTitle') &&
+    !values.articleTitle
   ) {
-    errors.birthday = 'required';
+    errors.articleTitle = 'required';
+  }
+  if (
+    Object.prototype.hasOwnProperty.call(values, 'articleText') &&
+    !values.articleText
+  ) {
+    errors.articleText = 'required';
   }
   return errors;
 };

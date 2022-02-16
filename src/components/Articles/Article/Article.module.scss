@@ -1,0 +1,13 @@
+.article {
+  background: #ffabab;
+  border-radius: 5px;
+  padding: 20px;
+
+  & h2 {
+    text-transform: capitalize;
+    margin-top: 0;
+  }
+  & p {
+    text-transform: capitalize;
+  }
+}

@@ -10,12 +10,14 @@ const MainLayout = ({children}) => {
       <header className={styles.header}>
         <h1>Sitename</h1>
         <div className={styles['header__buttons']}>
-          <Link to="/articles/create">
-            <Button text="New article" btnRole="primary" />
-          </Link>
-          <Link to="/signin" onClick={() => clearToken()}>
-            <Button text="Log out" btnRole="primary" />
-          </Link>
+          <Button
+            text="Log out"
+            btnRole="primary"
+            onClick={() => {
+              clearToken();
+              window.location.assign('/');
+            }}
+          />
         </div>
       </header>
       <main className={styles['main-layout']}>{children}</main>
