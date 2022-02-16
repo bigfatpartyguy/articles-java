@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Button.module.css';
+import styles from './Button.module.scss';
 
 export default function Button(props) {
   const {type, btnRole, text, onClick, disabled, ariaLabel} = props;
@@ -12,7 +12,8 @@ export default function Button(props) {
       type={type}
       onClick={onClick}
       value={text}
-      aria-label={ariaLabel}>
+      aria-label={ariaLabel}
+    >
       {text}
     </button>
   );

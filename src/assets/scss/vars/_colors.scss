@@ -1,0 +1,37 @@
+$colors: (
+  1: #25242b,
+  2: #191724,
+  3: #221d35,
+  4: #352d52,
+  5: #41337a,
+  6: #3a388a,
+  7: #6284b2,
+  8: #6ea4bf,
+  9: #c3efeb,
+  10: #d7dddf,
+  11: #d7eee9,
+  12: #f5fffd,
+  13: #fafeff,
+  14: #c1f0c9,
+);
+
+$btn-colors: (
+  primary: (
+    bg: map-get($colors, 13),
+    bg-hover: map-get($colors, 13),
+    bg-ring-hover: map-get($colors, 13),
+    border: map-get($colors, 10),
+    border-hover: map-get($colors, 2),
+    text: map-get($colors, 2),
+    text-hover: map-get($colors, 2),
+  ),
+  submit: (
+    bg: map-get($colors, 14),
+    bg-hover: map-get($colors, 14),
+    bg-ring-hover: map-get($colors, 13),
+    border: map-get($colors, 14),
+    border-hover: darken(map-get($colors, 14), 40%),
+    text: darken(map-get($colors, 14), 80%),
+    text-hover: map-get($colors, 2),
+  ),
+);

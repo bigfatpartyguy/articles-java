@@ -1,0 +1,87 @@
+@import '../../assets/scss/mixins/mixins';
+@import '../../assets/scss/vars/colors';
+
+.primary {
+  @include btn-theme($type: primary);
+  position: relative;
+  border-radius: 9999px;
+  height: 60px;
+}
+
+.submit {
+  @include btn-theme(submit);
+  &:disabled,
+  &:disabled:hover {
+    background-color: white;
+    border-color: #a3a5a8;
+    color: #a3a5a8;
+    cursor: default;
+  }
+}
+
+.active {
+  background-color: #007bff;
+  color: white;
+  &:disabled {
+    background-color: #007bff;
+    color: white;
+    cursor: default;
+  }
+}
+
+.danger {
+  border: 1px solid #e73a3a;
+  color: #e73a3a;
+  background-color: white;
+  &:hover {
+    background-color: #e73a3a;
+    color: white;
+  }
+  &:focus,
+  &:active {
+    background-color: #c03b3b;
+    color: white;
+  }
+}
+
+.edit {
+  border: 1px solid #eca306;
+  color: #eca306;
+  background-color: white;
+  &:hover {
+    background-color: #eca306;
+    color: black;
+  }
+  &:focus,
+  &:active {
+    background-color: #dd9906;
+    color: black;
+  }
+}
+
+.closeX {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  padding: 0;
+  background: 0;
+  color: #ccc;
+  overflow: hidden;
+  border: none;
+  font-size: 2.5em;
+  font-family: serif;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: color 0.1s ease-out;
+  &:hover {
+    transform: none;
+    background: none;
+    color: #f27474;
+  }
+}

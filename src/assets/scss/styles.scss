@@ -17,6 +17,7 @@ body {
   font-size: map-get($font-size, base);
   font-weight: map-get($font-size, base);
   height: 100%;
+  background: white;
   #root {
     height: 100%;
     display: flex;

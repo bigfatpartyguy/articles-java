@@ -1,0 +1,17 @@
+@import '../vars/colors';
+
+@mixin btn-theme($type: 'primary') {
+  color: map-get(map-get($btn-colors, $type), text);
+  background-color: map-get(map-get($btn-colors, $type), bg);
+  border-color: map-get(map-get($btn-colors, $type), border);
+  transition: box-shadow 0.2s ease, background-color 0.4s ease,
+    border-color 0.4s ease;
+  &:hover {
+    $bg-ring-hover: map-get(map-get($btn-colors, $type), bg-ring-hover);
+    $border-hover: map-get(map-get($btn-colors, $type), border-hover);
+    background-color: map-get(map-get($btn-colors, $type), bg-hover);
+    color: map-get(map-get($btn-colors, $type), text-hover);
+    border-color: transparent;
+    box-shadow: 0 0 0 4px $bg-ring-hover, 0 0 0 6px $border-hover;
+  }
+}
