@@ -2,10 +2,7 @@ import React from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
 import MainLayout from '../components/MainLayout';
 import Articles from '../components/Articles';
-
-const CreateArticle = () => {
-  return <h1>TODO</h1>;
-};
+import CreateArticle from '../components/CreateArticle';
 
 const MainRouter = () => {
   return (

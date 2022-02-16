@@ -1,16 +1,25 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {clearToken} from '../../services/storage';
 import Button from '../Button';
 import styles from './MainLayout.module.scss';
 
 const MainLayout = ({children}) => {
   return (
-    <main className={styles['main-layout']}>
-      <header>
+    <>
+      <header className={styles.header}>
         <h1>Sitename</h1>
-        <Button text="New article" btnRole="primary" />
+        <div className={styles['header__buttons']}>
+          <Link to="/articles/create">
+            <Button text="New article" btnRole="primary" />
+          </Link>
+          <Link to="/signin" onClick={() => clearToken()}>
+            <Button text="Log out" btnRole="primary" />
+          </Link>
+        </div>
       </header>
-      {children}
-    </main>
+      <main className={styles['main-layout']}>{children}</main>
+    </>
   );
 };
 

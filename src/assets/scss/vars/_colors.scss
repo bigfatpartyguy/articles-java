@@ -11,7 +11,7 @@ $colors: (
   10: #d7dddf,
   11: #d7eee9,
   12: #f5fffd,
-  13: #fafeff,
+  13: #fdfdfd,
   14: #c1f0c9,
 );
 
@@ -33,5 +33,10 @@ $btn-colors: (
     border-hover: darken(map-get($colors, 14), 40%),
     text: darken(map-get($colors, 14), 80%),
     text-hover: map-get($colors, 2),
+  ),
+  disabled: (
+    bg: white,
+    border: map-get($colors, 10),
+    text: map-get($colors, 10),
   ),
 );

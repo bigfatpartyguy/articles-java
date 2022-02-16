@@ -19,9 +19,13 @@ body {
   height: 100%;
   background: white;
   #root {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1200px;
     height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     button,
     input,
     select {

@@ -5,12 +5,16 @@ import styles from './Button.module.scss';
 export default function Button(props) {
   const {type, btnRole, text, onClick, disabled, ariaLabel} = props;
   /* eslint-disable react/button-has-type */
+  const handleClick = evt => {
+    evt.target.blur();
+    onClick(evt);
+  };
   return (
     <button
       disabled={disabled}
       className={styles[btnRole]}
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       value={text}
       aria-label={ariaLabel}
     >

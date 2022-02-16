@@ -3,21 +3,13 @@
 
 .primary {
   @include btn-theme($type: primary);
-  position: relative;
-  border-radius: 9999px;
-  height: 60px;
 }
 
 .submit {
   @include btn-theme(submit);
-  &:disabled,
-  &:disabled:hover {
-    background-color: white;
-    border-color: #a3a5a8;
-    color: #a3a5a8;
-    cursor: default;
-  }
 }
+
+// Styles below need correction
 
 .active {
   background-color: #007bff;
