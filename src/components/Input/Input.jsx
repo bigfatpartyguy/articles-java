@@ -30,6 +30,7 @@ export default function Input(props) {
           onChange={onChange}
           onBlur={onBlur}
           autoComplete="off"
+          placeholder={text}
           // required disabled to test script validation logic
           // required
         />

@@ -3,7 +3,6 @@
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
-  height: 450px;
   max-width: 400px;
   margin: 46vh auto 0;
   transform: translateY(-50%);
@@ -11,6 +10,10 @@
   box-shadow: 0 0 12px #dedede;
   background-color: white;
   padding: 2rem;
+
+  .login__header {
+    margin-bottom: 3rem;
+  }
 }
 
 .login__form {

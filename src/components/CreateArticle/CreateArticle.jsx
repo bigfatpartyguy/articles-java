@@ -4,6 +4,7 @@ import Input from '../Input';
 import TextArea from '../TextArea';
 import Button from '../Button';
 import {useFormValidation, validateInputs} from '../../services/validation';
+import styles from './CreateArticle.module.scss';
 
 const CreateArticle = () => {
   const [disabled, setDisabled] = useState(true);
@@ -18,7 +19,7 @@ const CreateArticle = () => {
   // useEffect();
 
   return (
-    <section>
+    <section className={styles['create-article']}>
       <header>
         <h1>Create a new article</h1>
       </header>

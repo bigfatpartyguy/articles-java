@@ -1,4 +1,5 @@
 @import 'vars/typography';
+@import 'vars/colors';
 @import 'elements/button';
 @import 'elements/input';
 
@@ -18,6 +19,7 @@ body {
   font-weight: map-get($font-size, base);
   height: 100%;
   background: white;
+  color: map-get($colors, gray-900);
   #root {
     margin: 0 auto;
     width: 80%;

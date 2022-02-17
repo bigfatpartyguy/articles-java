@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {useFormValidation, validateInputs} from '../../services/validation';
 import Input from '../Input';
 import Button from '../Button';
-import classes from './LoginPage.module.css';
+import classes from './LoginPage.module.scss';
 
 const LoginPage = ({signin}) => {
   const [disabled, setDisabled] = useState(true);
@@ -15,8 +15,7 @@ const LoginPage = ({signin}) => {
     );
 
   const onSubmit = user => {
-    const data = JSON.stringify(user);
-    signin(data);
+    signin(user);
   };
 
   return (
