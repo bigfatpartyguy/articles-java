@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Select from 'react-select';
+import * as request from '../../services/requests';
+import {CATEGORIES} from '../../services/requests/urls';
 import Input from '../Input';
 import TextArea from '../TextArea';
 import Button from '../Button';
@@ -7,6 +9,8 @@ import {useFormValidation, validateInputs} from '../../services/validation';
 import styles from './CreateArticle.module.scss';
 
 const CreateArticle = () => {
+  const [options, setOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [disabled, setDisabled] = useState(true);
   const {values, handleChange, handleBlur, handleSubmit, errors} =
     useFormValidation(
@@ -14,17 +18,51 @@ const CreateArticle = () => {
       validateInputs,
       setDisabled
     );
-  // const [selectOptions, setSelectOptions] = useState([]);
 
-  // useEffect();
+  useEffect(() => {
+    request.get(CATEGORIES).then(result => {
+      const groupedOptions = result.reduce((parentOptions, category) => {
+        if (category.parentId === null) {
+          return [
+            ...parentOptions,
+            {id: category.id, label: category.name, options: []},
+          ];
+        }
+        return parentOptions.map(option => {
+          if (option.id === category.parentId) {
+            return {
+              ...option,
+              options: [
+                ...option.options,
+                {
+                  value: category.name,
+                  label: category.name,
+                  parentId: category.parentId,
+                  id: category.id,
+                },
+              ],
+            };
+          }
+          return option;
+        });
+      }, []);
+      setOptions(groupedOptions);
+    });
+  }, []);
+
+  const onSubmit = formData => {
+    console.log({...formData, categories: selectedOptions});
+  };
 
   return (
     <section className={styles['create-article']}>
       <header>
         <h1>Create a new article</h1>
       </header>
-      <div></div>
-      <form>
+      <form onSubmit={event => handleSubmit(event, onSubmit)}>
+        <div>
+          <Select options={options} onChange={setSelectedOptions} isMulti />
+        </div>
         <Input
           type="text"
           id="articleTitle"

@@ -5,7 +5,7 @@ import Input from '../Input';
 import Button from '../Button';
 import classes from './LoginPage.module.scss';
 
-const LoginPage = ({signin}) => {
+const LoginPage = ({onSubmit}) => {
   const [disabled, setDisabled] = useState(true);
   const {values, handleChange, handleBlur, handleSubmit, errors} =
     useFormValidation(
@@ -13,10 +13,6 @@ const LoginPage = ({signin}) => {
       validateInputs,
       setDisabled
     );
-
-  const onSubmit = user => {
-    signin(user);
-  };
 
   return (
     <div className={classes.login}>

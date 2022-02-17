@@ -4,7 +4,7 @@ import LoginPage from '../components/LoginPage';
 
 const AuthRouter = ({signin}) => (
   <Routes>
-    <Route path="/signin" exact element={<LoginPage signin={signin} />} />
+    <Route path="/signin" exact element={<LoginPage onSubmit={signin} />} />
     <Route path="*" element={<Navigate to="/signin" />} />
   </Routes>
 );

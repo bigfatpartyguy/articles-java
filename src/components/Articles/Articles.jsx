@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {getToken, clearToken} from '../../services/storage';
+import * as request from '../../services/requests';
+import {ARTICLES} from '../../services/requests/urls';
 import Article from './Article';
 import Button from '../Button';
 import styles from './Articles.module.scss';
@@ -8,34 +9,10 @@ import styles from './Articles.module.scss';
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
-    const token = getToken();
-    fetch('/articles-api/categories', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        authorization: `Bearer ${token}`,
-      },
-    })
-      .then(response => response.json())
-      .then(res => console.log(res));
-    fetch('/articles-api/articles?page=1&limit=10', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        authorization: `Bearer ${token}`,
-      },
-    })
-      .then(response => {
-        if (response.status === 401) {
-          clearToken();
-          window.location.assign('/');
-        }
-        console.log(response);
-        return response.json();
-      })
-      .then(result => {
-        setArticles(result.content);
-      });
+    request.get(`${ARTICLES}?page=1&limit=10`).then(result => {
+      console.log(result.content);
+      setArticles(result.content);
+    });
   }, []);
   return (
     <div className={styles.articles}>
