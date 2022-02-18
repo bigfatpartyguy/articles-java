@@ -1,0 +1,28 @@
+@import '../../../assets/scss/vars/colors';
+.icon {
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sun-visible {
+  opacity: 1;
+  transform: translateX(50%);
+  fill: map-get($colors, gray-900);
+}
+
+.sun-invisible {
+  opacity: 0;
+  transform: translateX(-50px);
+  fill: map-get($colors, gray-900);
+}
+
+.moon-visible {
+  opacity: 1;
+  transform: translateX(-50%);
+  fill: map-get($colors, gray-100);
+}
+
+.moon-invisible {
+  opacity: 0;
+  transform: translateX(50px);
+  fill: map-get($colors, gray-100);
+}

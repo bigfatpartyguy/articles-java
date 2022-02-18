@@ -41,12 +41,9 @@ const LoginPage = ({onSubmit}) => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        <Button
-          disabled={disabled}
-          type="submit"
-          btnRole="submit"
-          text="Log in"
-        />
+        <Button disabled={disabled} type="submit" btnRole="submit">
+          Log in
+        </Button>
       </form>
     </div>
   );

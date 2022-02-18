@@ -1,5 +1,4 @@
 $colors: (
-  1: #25242b,
   gray-900: #1f2028,
   gray-800: #2e3039,
   gray-700: #3a3d4a,
@@ -12,6 +11,21 @@ $colors: (
   pure-white: #fff,
   green-100: #c1f0c9,
   red-danger: #ff5757,
+);
+
+$btn-color--mode: (
+  light: (
+    bg: transparent,
+    border: map-get($colors, gray-200),
+    border-hover: map-get($colors, gray-900),
+    icon: map-get($colors, gray-900),
+  ),
+  dark: (
+    bg: transparent,
+    border: map-get($colors, gray-200),
+    border-hover: map-get($colors, gray-100),
+    icon: map-get($colors, gray-100),
+  ),
 );
 
 $input-colors: (

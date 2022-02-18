@@ -10,7 +10,6 @@ const Articles = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     request.get(`${ARTICLES}?page=1&limit=10`).then(result => {
-      console.log(result.content);
       setArticles(result.content);
     });
   }, []);

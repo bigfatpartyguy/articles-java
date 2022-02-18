@@ -1,24 +1,26 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
 export default function Button(props) {
-  const {type, btnRole, text, onClick, disabled, ariaLabel} = props;
+  const {type, value, btnRole, onClick, disabled, ariaLabel, children} = props;
+  const btnRef = useRef();
   /* eslint-disable react/button-has-type */
   const handleClick = evt => {
-    evt.target.blur();
+    btnRef.current.blur();
     onClick(evt);
   };
   return (
     <button
+      ref={btnRef}
       disabled={disabled}
       className={styles[btnRole]}
       type={type}
       onClick={handleClick}
-      value={text}
+      value={value}
       aria-label={ariaLabel}
     >
-      {text}
+      {children}
     </button>
   );
 }

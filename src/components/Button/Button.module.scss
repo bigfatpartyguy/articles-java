@@ -9,6 +9,47 @@
   @include btn-theme(submit);
 }
 
+.circle--light {
+  $light: map-get($btn-color--mode, light);
+  $bg: map-get($light, bg);
+  $border: map-get($light, border);
+  $border-hover: map-get($light, border-hover);
+  width: 50px;
+  height: 50px;
+  background-color: $bg;
+  border-color: $border;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+  * {
+    flex: 0 0 auto;
+  }
+  &:hover,
+  &:focus {
+    background-color: $bg;
+    border-color: $border-hover;
+  }
+}
+
+.circle--dark {
+  @extend .circle--light;
+  $dark: map-get($btn-color--mode, dark);
+  $bg: map-get($dark, bg);
+  $border: map-get($dark, border);
+  $border-hover: map-get($dark, border-hover);
+  background-color: $bg;
+  border-color: $border;
+  &:hover,
+  &:focus {
+    background-color: $bg;
+    border-color: $border-hover;
+  }
+}
+
 // Styles below need correction
 
 .active {

@@ -5,5 +5,15 @@
 
   form {
     padding: 0 40px;
+
+    .select input {
+      box-shadow: none;
+    }
+
+    .confirmation-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 }

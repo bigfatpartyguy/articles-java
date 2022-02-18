@@ -1,12 +1,27 @@
 import React, {useState, useEffect} from 'react';
-import Select from 'react-select';
+import {Link} from 'react-router-dom';
+import Select, {NonceProvider} from 'react-select';
 import * as request from '../../services/requests';
-import {CATEGORIES} from '../../services/requests/urls';
+import {CATEGORIES, ARTICLES} from '../../services/requests/urls';
+import {categoriesToSelectOptions} from '../../services/mappers';
 import Input from '../Input';
 import TextArea from '../TextArea';
 import Button from '../Button';
 import {useFormValidation, validateInputs} from '../../services/validation';
 import styles from './CreateArticle.module.scss';
+
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    padding: '10px',
+    borderRadius: '0.4rem',
+  }),
+  container: (provided, state) => ({
+    ...provided,
+    marginBottom: '40px',
+    borderRadius: '5px',
+  }),
+};
 
 const CreateArticle = () => {
   const [options, setOptions] = useState([]);
@@ -21,37 +36,15 @@ const CreateArticle = () => {
 
   useEffect(() => {
     request.get(CATEGORIES).then(result => {
-      const groupedOptions = result.reduce((parentOptions, category) => {
-        if (category.parentId === null) {
-          return [
-            ...parentOptions,
-            {id: category.id, label: category.name, options: []},
-          ];
-        }
-        return parentOptions.map(option => {
-          if (option.id === category.parentId) {
-            return {
-              ...option,
-              options: [
-                ...option.options,
-                {
-                  value: category.name,
-                  label: category.name,
-                  parentId: category.parentId,
-                  id: category.id,
-                },
-              ],
-            };
-          }
-          return option;
-        });
-      }, []);
-      setOptions(groupedOptions);
+      setOptions(categoriesToSelectOptions(result));
     });
   }, []);
 
   const onSubmit = formData => {
-    console.log({...formData, categories: selectedOptions});
+    const {articleTitle: title, articleText: text} = formData;
+    const categoriesIds = selectedOptions.map(option => option.id);
+    request.post(ARTICLES, {title, text, categoriesIds});
+    window.location.assign('/articles');
   };
 
   return (
@@ -61,7 +54,14 @@ const CreateArticle = () => {
       </header>
       <form onSubmit={event => handleSubmit(event, onSubmit)}>
         <div>
-          <Select options={options} onChange={setSelectedOptions} isMulti />
+          <Select
+            className={styles.select}
+            styles={customStyles}
+            options={options}
+            onChange={setSelectedOptions}
+            isMulti
+            placeholder="Select category"
+          />
         </div>
         <Input
           type="text"
@@ -82,12 +82,17 @@ const CreateArticle = () => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        <Button
-          disabled={disabled}
-          type="submit"
-          btnRole="submit"
-          text="Create article"
-        />
+        <div className={styles['confirmation-footer']}>
+          <Button
+            disabled={disabled}
+            type="submit"
+            btnRole="submit"
+            text="Create article"
+          />
+          <Link to="/articles">
+            <Button type="button" btnRole="primary" text="Cancel" />
+          </Link>
+        </div>
       </form>
     </section>
   );
