@@ -1,4 +1,6 @@
-.login {
+@import '../../assets/scss/vars/colors';
+
+%login-common {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
@@ -7,12 +9,23 @@
   margin: 46vh auto 0;
   transform: translateY(-50%);
   border-radius: 0.4rem;
-  box-shadow: 0 0 12px #dedede;
-  background-color: white;
+  box-shadow: 0 0 12px map-get($colors, gray-200);
   padding: 2rem;
+  transition: all 600ms ease;
 
   .login__header {
     margin-bottom: 3rem;
+  }
+}
+
+.login {
+  @extend %login-common;
+  background-color: map-get($colors, pure-white);
+
+  &--dark {
+    @extend %login-common;
+    box-shadow: 0 0 12px map-get($colors, gray-700);
+    background-color: map-get($colors, gray-900);
   }
 }
 

@@ -3,30 +3,7 @@ import Button from '../Button';
 import {BiSun, BiMoon} from 'react-icons/bi';
 import styles from './ColorModeButton.module.scss';
 
-function useDarkMode() {
-  const preferDarkQuery = '(prefers-color-scheme: dark)';
-  const [mode, setMode] = React.useState(
-    () =>
-      window.localStorage.getItem('colorMode') ||
-      (window.matchMedia(preferDarkQuery).matches ? 'dark' : 'light')
-  );
-
-  React.useEffect(() => {
-    const mediaQuery = window.matchMedia(preferDarkQuery);
-    const handleChange = () => setMode(mediaQuery.matches ? 'dark' : 'light');
-    mediaQuery.addListener(handleChange);
-    return () => mediaQuery.removeListener(handleChange);
-  }, []);
-
-  React.useEffect(() => {
-    window.localStorage.setItem('colorMode', mode);
-  }, [mode]);
-
-  return [mode, setMode];
-}
-
-const ColorModeButton = () => {
-  const [mode, setMode] = useDarkMode();
+const ColorModeButton = ({mode, setMode}) => {
   return (
     <Button
       type="button"
@@ -42,7 +19,7 @@ const ColorModeButton = () => {
       <BiMoon
         size="1.6em"
         className={`${styles.icon} ${
-          mode === 'light' ? styles['moon-invisible'] : styles['moon-visible']
+          mode === 'dark' ? styles['moon-visible'] : styles['moon-invisible']
         }`}
       />
     </Button>

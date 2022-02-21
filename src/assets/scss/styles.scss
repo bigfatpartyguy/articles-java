@@ -18,8 +18,9 @@ body {
   font-size: map-get($font-size, base);
   font-weight: map-get($font-size, base);
   height: 100%;
-  background: white;
+  background-color: white;
   color: map-get($colors, gray-900);
+  transition: all 800ms ease;
   #root {
     margin: 0 auto;
     width: 80%;
@@ -41,4 +42,20 @@ body {
 *:after {
   box-sizing: inherit;
   font-family: inherit;
+}
+
+// rules for dark theme
+
+[data-theme='dark'] {
+  body {
+    background-color: map-get($colors, gray-900);
+    color: map-get($colors, gray-100);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: map-get($colors, gray-100);
+    background: map-get($colors, gray-900);
+  }
 }

@@ -22,7 +22,7 @@ $btn-color--mode: (
   ),
   dark: (
     bg: transparent,
-    border: map-get($colors, gray-200),
+    border: map-get($colors, gray-600),
     border-hover: map-get($colors, gray-100),
     icon: map-get($colors, gray-100),
   ),
@@ -44,6 +44,15 @@ $btn-colors: (
     border-hover: map-get($colors, gray-900),
     text: map-get($colors, gray-900),
     text-hover: map-get($colors, gray-900),
+  ),
+  primary--dark: (
+    bg: map-get($colors, gray-900),
+    bg-hover: map-get($colors, gray-900),
+    bg-ring-hover: map-get($colors, gray-900),
+    border: map-get($colors, gray-600),
+    border-hover: map-get($colors, gray-100),
+    text: map-get($colors, gray-100),
+    text-hover: map-get($colors, gray-100),
   ),
   submit: (
     bg: map-get($colors, green-100),

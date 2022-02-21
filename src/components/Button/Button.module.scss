@@ -3,6 +3,9 @@
 
 .primary {
   @include btn-theme($type: primary);
+  &--dark {
+    @include btn-theme($type: 'primary--dark');
+  }
 }
 
 .submit {
@@ -19,7 +22,6 @@
   background-color: $bg;
   border-color: $border;
   border-radius: 50%;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
