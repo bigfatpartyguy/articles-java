@@ -1,5 +1,6 @@
 @import '../vars/colors';
 
+$light-colors: map-get($input-colors, light);
 [type='text'],
 [type='email'],
 [type='number'],
@@ -7,8 +8,8 @@
 select,
 textarea {
   font-size: 1.1rem;
-  border: 2px solid map-get($input-colors, bg);
-  background-color: map-get($input-colors, bg);
+  border: 2px solid map-get($light-colors, bg);
+  background-color: map-get($light-colors, bg);
   border-radius: 0.4rem;
   padding: 1.3rem;
   outline: none;
@@ -33,8 +34,8 @@ textarea:active,
 textarea:hover,
 select:focus,
 select:active {
-  $bg: map-get($input-colors, bg-ring-hover);
-  $border: map-get($input-colors, border-hover);
+  $bg: map-get($light-colors, bg-ring-hover);
+  $border: map-get($light-colors, border-hover);
   border-color: transparent;
   box-shadow: 0 0 0 4px $bg, 0 0 0 6px $border;
 }

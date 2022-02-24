@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
+import ThemeContext from '../../contexts/ThemeContext';
 import styles from './Input.module.scss';
 
 export default function Input(props) {
+  const {colorMode} = useContext(ThemeContext);
   const {
     error,
     type,
@@ -15,7 +17,11 @@ export default function Input(props) {
     children,
   } = props;
   return (
-    <div className={styles.inputComponent}>
+    <div
+      className={
+        styles[`inputComponent${colorMode === 'dark' ? '--dark' : ''}`]
+      }
+    >
       <label className={styles.label} htmlFor={id}>
         <span>{text}</span>
         <span className={styles.errorMsg}>{errorMessage}</span>

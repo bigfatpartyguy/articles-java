@@ -29,10 +29,20 @@ $btn-color--mode: (
 );
 
 $input-colors: (
-  bg: map-get($colors, gray-100),
-  bg-ring-hover: map-get($colors, pure-white),
-  border-hover: map-get($colors, gray-900),
-  error: map-get($colors, red-danger),
+  light: (
+    bg: map-get($colors, gray-100),
+    bg-ring-hover: map-get($colors, pure-white),
+    border-hover: map-get($colors, gray-900),
+    error: map-get($colors, red-danger),
+  ),
+  dark: (
+    bg: map-get($colors, gray-600),
+    placeholder: map-get($colors, gray-400),
+    text: map-get($colors, gray-100),
+    bg-ring-hover: map-get($colors, gray-900),
+    border-hover: map-get($colors, gray-100),
+    error: map-get($colors, red-danger),
+  ),
 );
 
 $btn-colors: (

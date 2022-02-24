@@ -1,8 +1,10 @@
 @import '../../assets/scss/vars/colors';
-$error-color: map-get($input-colors, error);
-$ring-bg: map-get($input-colors, bg);
+$light: map-get($input-colors, light);
+$dark: map-get($input-colors, dark);
+$error-color: map-get($light, error);
+$ring-bg: map-get($light, bg);
 
-.inputComponent {
+%inputCommon {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
@@ -33,5 +35,39 @@ $ring-bg: map-get($input-colors, bg);
   }
   .errorMsg {
     color: $error-color;
+  }
+}
+
+.inputComponent {
+  @extend %inputCommon;
+
+  &--dark {
+    @extend %inputCommon;
+
+    & input {
+      background-color: map-get($dark, bg);
+      border-color: map-get($dark, bg);
+      color: map-get($dark, text);
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: transparent;
+        box-shadow: 0 0 0 4px map-get($dark, bg-ring-hover),
+          0 0 0 6px map-get($dark, border-hover);
+      }
+
+      &::placeholder {
+        color: map-get($dark, placeholder);
+      }
+    }
+    .error {
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: transparent;
+        box-shadow: 0 0 0 4px map-get($dark, bg-ring-hover),
+          0 0 0 6px $error-color;
+      }
+    }
   }
 }

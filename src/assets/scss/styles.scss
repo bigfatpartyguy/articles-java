@@ -20,7 +20,7 @@ body {
   height: 100%;
   background-color: white;
   color: map-get($colors, gray-900);
-  transition: all 800ms ease;
+  transition: all 400ms ease;
   #root {
     margin: 0 auto;
     width: 80%;
