@@ -83,14 +83,13 @@ const CreateArticle = () => {
           onBlur={handleBlur}
         />
         <div className={styles['confirmation-footer']}>
-          <Button
-            disabled={disabled}
-            type="submit"
-            btnRole="submit"
-            text="Create article"
-          />
+          <Button disabled={disabled} type="submit" btnRole="submit">
+            Create article
+          </Button>
           <Link to="/articles">
-            <Button type="button" btnRole="primary" text="Cancel" />
+            <Button type="button" btnRole="primary">
+              Cancel
+            </Button>
           </Link>
         </div>
       </form>
