@@ -2,13 +2,12 @@ import React, {useState, useContext} from 'react';
 import PropTypes from 'prop-types';
 import ThemeContext from '../../contexts/ThemeContext';
 import {useFormValidation, validateInputs} from '../../services/validation';
-import ColorModeButton from '../Button/ColorModeButton/ColorModeButton';
 import Input from '../Input';
 import Button from '../Button';
 import classes from './LoginPage.module.scss';
 
 const LoginPage = ({onSubmit}) => {
-  const {colorMode, setColorMode} = useContext(ThemeContext);
+  const {colorMode} = useContext(ThemeContext);
   const [disabled, setDisabled] = useState(true);
   const {values, handleChange, handleBlur, handleSubmit, errors} =
     useFormValidation(
@@ -19,9 +18,6 @@ const LoginPage = ({onSubmit}) => {
 
   return (
     <div className={classes[`login${colorMode === 'dark' ? '--dark' : ''}`]}>
-      <div>
-        <ColorModeButton mode={colorMode} setMode={setColorMode} />
-      </div>
       <h1 className={classes.login__header}>Log in to continue</h1>
       <form
         className={classes.login__form}

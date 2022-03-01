@@ -18,10 +18,12 @@
   }
 
   & .header__buttons {
+    display: flex;
+    align-items: center;
     margin-left: auto;
 
-    & *:first-child {
-      margin-right: 40px;
+    & > *:last-child {
+      margin-left: 40px;
     }
   }
 }

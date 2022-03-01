@@ -1,13 +1,15 @@
 import React from 'react';
 import {getToken} from '../services/storage';
+import MainLayout from '../components/MainLayout';
 import AuthRouter from './AuthRouter';
 import MainRouter from './MainRouter';
 
 const AppRouter = ({signin}) => {
-  if (!getToken()) {
-    return <AuthRouter signin={signin} />;
-  }
-  return <MainRouter />;
+  return (
+    <MainLayout>
+      {!getToken() ? <AuthRouter signin={signin} /> : <MainRouter />}
+    </MainLayout>
+  );
 };
 
 export default AppRouter;
