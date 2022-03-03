@@ -43,7 +43,11 @@ const LoginPage = ({onSubmit}) => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        <Button disabled={disabled} type="submit" btnRole="submit">
+        <Button
+          disabled={disabled}
+          type="submit"
+          btnRole={colorMode === 'dark' ? 'submit--dark' : 'submit'}
+        >
           Log in
         </Button>
       </form>

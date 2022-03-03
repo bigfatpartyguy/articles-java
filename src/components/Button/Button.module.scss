@@ -10,6 +10,25 @@
 
 .submit {
   @include btn-theme(submit);
+  &--dark {
+    $dis-bg: lighten(map-get($colors, gray-600), 5%);
+    $border-hover: map-get(map-get($btn-colors, submit), border-hover);
+    $bg-ring-hover: map-get(map-get($btn-colors, primary--dark), bg-ring-hover);
+    @include btn-theme(submit);
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: 0 0 0 4px $bg-ring-hover, 0 0 0 6px $border-hover;
+    }
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:focus {
+      color: map-get($colors, gray-900);
+      background-color: $dis-bg;
+      border-color: $dis-bg;
+    }
+  }
 }
 
 .circle--light {

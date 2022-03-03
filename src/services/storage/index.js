@@ -5,4 +5,6 @@ export const saveToken = token =>
 
 export const getToken = () => window.localStorage.getItem(AUTH_TOKEN_KEY);
 
-export const clearToken = () => window.localStorage.clear(AUTH_TOKEN_KEY);
+export const clearToken = () => {
+  window.localStorage.removeItem(AUTH_TOKEN_KEY);
+};

@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import Select, {NonceProvider} from 'react-select';
+import ThemeContext from '../../contexts/ThemeContext';
 import * as request from '../../services/requests';
 import {CATEGORIES, ARTICLES} from '../../services/requests/urls';
 import {categoriesToSelectOptions} from '../../services/mappers';
@@ -10,17 +11,38 @@ import Button from '../Button';
 import {useFormValidation, validateInputs} from '../../services/validation';
 import styles from './CreateArticle.module.scss';
 
-const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    padding: '10px',
-    borderRadius: '0.4rem',
-  }),
-  container: (provided, state) => ({
-    ...provided,
-    marginBottom: '40px',
-    borderRadius: '5px',
-  }),
+const getSelectStyles = (mode = 'light') => {
+  const colors = {
+    gray900: '#1f2028',
+    gray800: '#2e3039',
+    gray700: '#3a3d4a',
+    gray500: '#535661',
+    gray400: '#818890',
+    gray100: '#f7f7f7',
+    white: '#fff',
+  };
+  return {
+    control: (provided, state) => ({
+      ...provided,
+      padding: '10px',
+      borderRadius: '0.4rem',
+      transition: 'all 450ms ease',
+      backgroundColor: mode === 'dark' ? colors.gray700 : colors.gray100,
+      borderColor: 'transparent',
+      color: 'white',
+    }),
+    container: (provided, state) => ({
+      ...provided,
+      marginBottom: '40px',
+      borderRadius: '5px',
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      backgroundColor: mode === 'dark' ? colors.gray700 : colors.gray100,
+      border: `2px solid ${colors.gray500}`,
+      borderRadius: '0.4rem',
+    }),
+  };
 };
 
 const CreateArticle = () => {
@@ -33,6 +55,7 @@ const CreateArticle = () => {
       validateInputs,
       setDisabled
     );
+  const {colorMode} = useContext(ThemeContext);
 
   useEffect(() => {
     request.get(CATEGORIES).then(result => {
@@ -56,7 +79,7 @@ const CreateArticle = () => {
         <div>
           <Select
             className={styles.select}
-            styles={customStyles}
+            styles={getSelectStyles(colorMode)}
             options={options}
             onChange={setSelectedOptions}
             isMulti
@@ -76,6 +99,7 @@ const CreateArticle = () => {
         <TextArea
           id="articleText"
           text="Text"
+          placeholder="Text"
           value={values.articleText}
           error={!!errors.articleText}
           errorMessage={errors.articleText || ''}
@@ -83,11 +107,18 @@ const CreateArticle = () => {
           onBlur={handleBlur}
         />
         <div className={styles['confirmation-footer']}>
-          <Button disabled={disabled} type="submit" btnRole="submit">
+          <Button
+            disabled={disabled}
+            type="submit"
+            btnRole={colorMode === 'dark' ? 'submit--dark' : 'submit'}
+          >
             Create article
           </Button>
           <Link to="/articles">
-            <Button type="button" btnRole="primary">
+            <Button
+              type="button"
+              btnRole={colorMode === 'dark' ? 'primary--dark' : 'primary'}
+            >
               Cancel
             </Button>
           </Link>

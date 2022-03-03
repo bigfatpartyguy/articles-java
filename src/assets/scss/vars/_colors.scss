@@ -36,7 +36,7 @@ $input-colors: (
     error: map-get($colors, red-danger),
   ),
   dark: (
-    bg: map-get($colors, gray-600),
+    bg: map-get($colors, gray-700),
     placeholder: map-get($colors, gray-400),
     text: map-get($colors, gray-100),
     bg-ring-hover: map-get($colors, gray-900),
@@ -69,7 +69,7 @@ $btn-colors: (
     bg-hover: map-get($colors, green-100),
     bg-ring-hover: map-get($colors, pure-white),
     border: map-get($colors, green-100),
-    border-hover: darken(map-get($colors, green-100), 40%),
+    border-hover: darken(map-get($colors, green-100), 20%),
     text: darken(map-get($colors, green-100), 80%),
     text-hover: map-get($colors, gray-900),
   ),
