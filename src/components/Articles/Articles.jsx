@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Outlet} from 'react-router-dom';
 import * as request from '../../services/requests';
 import {ARTICLES} from '../../services/requests/urls';
 import ThemeContext from '../../contexts/ThemeContext';
@@ -15,16 +15,19 @@ const Articles = () => {
       setArticles(result.content);
     });
   }, []);
+  console.dir(<Outlet />);
   return (
     <div className={styles.articles}>
       {articles.length
         ? articles.map(article => {
             return (
-              <Article
-                key={article.id}
-                title={article.title}
-                text={article.text}
-              />
+              <Link to={`/articles/${article.id}`} key={article.id}>
+                <Article
+                  id={article.id}
+                  title={article.title}
+                  text={article.text}
+                />
+              </Link>
             );
           })
         : null}
@@ -33,6 +36,7 @@ const Articles = () => {
           New Article
         </Button>
       </Link>
+      <Outlet />
     </div>
   );
 };

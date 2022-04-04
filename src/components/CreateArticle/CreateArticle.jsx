@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
-import Select, {NonceProvider} from 'react-select';
+import Select from 'react-select';
 import ThemeContext from '../../contexts/ThemeContext';
 import * as request from '../../services/requests';
 import {CATEGORIES, ARTICLES} from '../../services/requests/urls';
